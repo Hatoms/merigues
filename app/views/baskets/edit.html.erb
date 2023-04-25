@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to basket"), basket_path(@basket) %>
+
+  <div class="header">
+    <h1> Modifier le panier</h1>
+  </div>
+
+  <%= render "form", basket: @basket %>
+</main>

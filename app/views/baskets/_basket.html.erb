@@ -1,0 +1,12 @@
+<div class="basket">
+  <%= link_to basket.date, basket_path(basket) %>
+  <div class="basket__actions">
+    <%= button_to "Delete",
+                  basket_path(basket),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Edit",
+                edit_basket_path(basket),
+                class: "btn btn--light" %>
+  </div>
+</div>

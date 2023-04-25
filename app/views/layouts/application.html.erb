@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<title>Le jardin des Mérigues</title>
+<head>
+  <%= stylesheet_link_tag "main" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="/">Accueil</a>
+  <a class="w3-bar-item w3-button" href="/">Les légumes</a>
+  <a class="w3-bar-item w3-button" href="/">AMAP</a>
+  <% if Current.customer && Current.customer.admin? %>
+    <a class="w3-bar-item w3-button"><i class="bi bi-eye-fill"></i> Espace administrateur  </a>
+    <a <%= link_to "Liste baskets", baskets_path, class: "w3-bar-item w3-button" %></a>
+    <a <%= link_to "Liste customer",  admin_index_customer_path, class: "w3-bar-item w3-button" %></a>
+    <a <%= link_to "Me déconnecter", session_destroy_path, class: "w3-bar-item w3-button" %></a>
+  <% elsif Current.customer %>
+    <a class="w3-bar-item w3-button"><i class="bi bi-person-badge-fill"></i> Espace <%= Current.customer.first_name %></a>
+    <a <%= link_to "Mes prochains baskets", orders_customer_path, class: "w3-bar-item w3-button" %></a>
+    <a <%= link_to "Paiements", customers_path, class: "w3-bar-item w3-button" %></a>
+    <a <%= link_to "Mes informations", customers_path, class: "w3-bar-item w3-button" %></a>
+    <a <%= link_to "Me déconnecter", session_destroy_path, class: "w3-bar-item w3-button" %></a>
+  <% else %>
+    <a class="w3-bar-item w3-button" href="/customers"><i class="bi bi-person-circle"></i>   Je m'identifie</a>
+    <!-- <a <i class="bi bi-person-circle"></i><%= link_to "Je m'identifie", customers_path, class: "w3-bar-item w3-button" %></a>-->
+  <% end %>
+  <!-- <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Déroule<i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#">Mes baskets commandés</a>
+      <a class="w3-bar-item w3-button" href="#">Mes informations</a>
+
+    </div>
+  </div> -->
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+<div id="myTop" class="w3-container w3-top w3-theme w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  <span id="myIntro" class="w3-hide">Le jardin des Mérigues</span></p>
+</div>
+
+<header class="w3-container dome-header" style="padding:64px 32px">
+  <h1 class="w3-xxxlarge">Le jardin des Mérigues</h1>
+</header>
+
+<div class="w3-container" style="padding:32px">
+
+<%= yield %>
+
+</div>
+
+<footer class="w3-container w3-theme" style="padding:32px">
+  <p>Footer information goes here</p>
+</footer>
+     
+</div>
+
+<script>
+// Open and close the sidebar on medium and small screens
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Change style of top container on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+    document.getElementById("myIntro").classList.add("w3-show-inline-block");
+  } else {
+    document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+    document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+  }
+}
+
+// Accordions
+function myAccordion(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme", "");
+  }
+}
+</script>
+     
+</body>
+
+</html>

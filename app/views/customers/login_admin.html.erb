@@ -1,0 +1,22 @@
+
+<div class="mainContent">
+  <div class="grid">
+    <h1 class="largeHeader">Sign up</h1>
+   
+    <div class="col_1">
+      <%= form_with url: login_admin_path, scope: :customer do |form| %>
+        <div>
+          <%= form.label :email %>
+          <%= form.email_field :email, required: true, value: 'papa@admin' %>
+        </div>
+        <div>
+          <%= form.label :password %>
+          <%= form.password_field :password, required: true %>
+        </div>
+        <%= form.submit "Sign In" %>
+      <% end %>
+
+    </div><!-- end column 2 contact form -->
+
+  </div><!-- end grid -->
+</div><!-- end mainContent -->

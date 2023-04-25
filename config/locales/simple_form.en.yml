@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      basket:
+        name: Name of your basket
+    labels:
+      basket:
+        name: Name
+
+  helpers:
+    submit:
+      customer:
+        create: Create basket
+        update: Update basket

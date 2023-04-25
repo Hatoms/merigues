@@ -1,0 +1,20 @@
+<script type="module">
+    import 'jquery';
+    console.log($);
+    console.log(jQuery);
+</script>
+
+<%= javascript_include_tag "daterangepicker_initializer.js" %>
+
+<%= simple_form_for basket, html: { class: "basket form" } do |f| %>
+  <% if basket.errors.any? %>
+    <div class="error-message">
+      <%= basket.errors.full_messages.to_sentence.capitalize %>
+    </div>
+  <% end %>
+
+  <%= f.input :content, input_html: { autofocus: true } %>
+  <%= f.date_select :date %>
+  <!--<%= f.text_field :date, class: 'form-control', data: { behavior: 'daterangepicker' } %>-->
+  <%= f.submit class: "btn btn--secondary" %>
+<% end %>

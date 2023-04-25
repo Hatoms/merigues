@@ -1,0 +1,15 @@
+<%= form_for @customer, class: "signupForm" do |f| %>
+    <%= f.label :Prénom %>
+    <%= f.text_field :first_name, class: "shortInput" %> <br />
+  
+    <%= f.label :Nom %>
+    <%= f.text_field :last_name, class: "shortInput" %> <br />
+  
+    <%= f.label :Email, "Adresse email" %>
+    <%= f.text_field :email, class: "shortInput" %> <br />
+  
+    <%= f.label :Téléphone %>
+    <%= f.text_field :phone, class: "shortInput" %> <br />
+  
+    <%= f.submit "Créer mon compte client", class: "button createAccount" %>
+  <% end %>

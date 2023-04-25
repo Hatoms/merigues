@@ -1,0 +1,30 @@
+<div class="basket">
+  <% if basket.present? %>
+  <p>Voici le basket du : <%= basket.date %> </p>
+  <p> Le content du basket sera le suivant : <%= basket.content %></p>
+  <p> Nombre de orders : <%= basket.orders.count %> </p>
+  <p> Nombre de baskets restants disponibles : <%= 30 - basket.orders.count %> </p>
+<% end %>
+<% if Current.customer && Current.customer.admin? %>
+  <p>Espace administrateur </p>
+  Liste des commandes effectuées :
+   <ul>
+      <% basket.orders_sort_by_time.each do |order| %>
+          <li>
+            <%= order.customer.first_name + " " + order.customer.last_name + "      -      Commandé le : " + order.created_at.to_s %>
+          </li>
+      <% end %>
+  </ul>   
+<% elsif Current.customer %>
+  <p>Espace customer : <%= Current.customer.first_name %> </p>
+  <% if Current.customer.baskets.include? basket %>
+    Panier commandé, je m'engage à venir le chercher à la date du <%= basket.date %>.
+  <% else %>
+    Panier non commandé.
+    <%= button_to "Je order le basket", new_order_basket_path(id: basket.id) %>
+  <% end %>
+<% else %>
+  <p> Je m'identifie pour commandé le panier </p>
+<% end %>
+
+</div>

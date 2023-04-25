@@ -1,0 +1,47 @@
+<style>
+ul {
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #ddd;
+}
+
+ul li {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+  border-bottom: none
+}
+
+a {
+  text-decoration: none
+}
+
+li:hover {
+  background-color: #ddd;
+}
+</style>
+
+<main class="container">
+  <div class="header">
+    <h1>Mes commandes</h1>
+  
+  </div>
+
+  <% if @orders.any? %>
+  <ul class="level1">
+      <h2>Mes prochains paniers commandés</h2>
+      <% @orders.each do |order| %>
+          <li>
+            <%= link_to order.basket.date, basket_path(order.basket)%>
+             
+          </li>
+      <% end %>
+  </ul>
+  <% else %>
+    Vous n'avez pas encore commandé de paniers.
+  <% end %>
+
+</main>
+

@@ -1,0 +1,12 @@
+<div class="customer">
+  <%= link_to customer.first_name, customer_path(customer) %>
+  <div class="customer__actions">
+    <%= button_to "Supprimer",
+                  customer_path(customer),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Editer",
+                edit_customer_path(customer),
+                class: "btn btn--light" %>
+  </div>
+</div>
