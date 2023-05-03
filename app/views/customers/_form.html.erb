@@ -1,15 +1,20 @@
 <%= form_for @customer, class: "signupForm" do |f| %>
     <%= f.label :Prénom %>
     <%= f.text_field :first_name, class: "shortInput" %> <br />
-  
+    <br />
     <%= f.label :Nom %>
     <%= f.text_field :last_name, class: "shortInput" %> <br />
-  
+    <br />
     <%= f.label :Email, "Adresse email" %>
     <%= f.text_field :email, class: "shortInput" %> <br />
-  
+    <br />
     <%= f.label :Téléphone %>
     <%= f.text_field :phone, class: "shortInput" %> <br />
-  
+    <br />
+    <%= f.label "Mes commandes de paniers : "%> <br />
+    <%= f.radio_button :engaged_client, true, value: true %> Client·e engagé·e : Je commande tous les paniers par défaut et je me désinscrit éventuellement des quelques paniers où je ne serai pas présent.<br />
+    <%= f.radio_button :engaged_client, false, value: false %> Client·e ponctuel·le : Je m'inscrit ponctuellement aux paniers qui sont disponibles.<br />
+    <br />
+    <br />
     <%= f.submit "Créer mon compte client", class: "button createAccount" %>
   <% end %>

@@ -5,4 +5,8 @@ class Basket < ApplicationRecord
     def orders_sort_by_time
       self.orders.sort_by{ |c| c.created_at} #mettre décroissant
     end
+
+    def name
+      "Panier du " + I18n.l(self.date, :format => :calendar)
+    end
   end

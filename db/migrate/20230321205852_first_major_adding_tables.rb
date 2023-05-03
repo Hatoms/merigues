@@ -4,6 +4,8 @@ class FirstMajorAddingTables < ActiveRecord::Migration[7.0]
       t.text :content
       t.date :date
       t.integer :limit_max_baskets, default: 30
+      t.boolean :exceptional_sale, default: false
+      t.text :exceptional_sale_content, default: ""
       t.timestamps
     end
 
@@ -12,6 +14,7 @@ class FirstMajorAddingTables < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :password
       t.boolean :admin, default: false
+      t.boolean :engaged_client, default: false
       t.string :phone
       t.string :email, null: false
       

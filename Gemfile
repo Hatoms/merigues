@@ -82,3 +82,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "simple_calendar", "~> 2.4"
+
+gem "rails-i18n", "~> 7.0"
+
+gem "htmlbeautifier", "~> 1.4"

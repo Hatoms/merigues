@@ -1,63 +1,72 @@
-<h2> Prochain panier ! </h2>
-
-<%= render "baskets/display_basket", basket: @next_basket %>
-
-<p> <i class="bi bi-person-circle"></i> </p>
-<ul class="w3-leftbar w3-theme-border" style="list-style:none">
- <li>Smaller and faster than other CSS frameworks.</li>
- <li>Easier to learn, and easier to use than other CSS frameworks.</li>
- <li>Uses standard CSS only (No jQuery or JavaScript library).</li>
- <li>Speeds up mobile HTML apps.</li>
- <li>Provides CSS equality for all devices. PC, laptop, tablet, and mobile:</li>
-</ul>
-<br>
-<%= image_tag "basket.jpeg" %>    
-
-<hr>
-<h2>W3.CSS is Free</h2>
-<p>W3.CSS is free to use. No license is necessary.</p>
-
-<hr>
-<h2>Easy to Use</h2>
-<div class="w3-container w3-sand w3-leftbar">
-<p><i>Make it as simple as possible, but not simpler.</i><br>
-Albert Einstein</p>
-</div>
-
-<hr>
-<h2>W3.CSS Web Site Templates</h2>
-
-<p>We have created some responsive W3CSS templates for you to use.</p>
-<p>You are free to modify, save, share, use or do whatever you want with them:</p>
-
-
-<div class="w3-panel w3-light-grey w3-padding-16 w3-card">
-<h3 class="w3-center">Band Template</h3>
-<div class="w3-content" style="max-width:800px">
-<a href="tryw3css_templates_band.htm" target="_blank"  title="Band Demo"><img src="img_temp_band.jpg" style="width:98%;margin:20px 0" alt="Band Template"></a><br>
-<div class="w3-row">
-  <div class="w3-col m6">
-    <a href="tryw3css_templates_band.htm" target="_blank" class="w3-button w3-padding-large w3-dark-grey" style="width:98.5%">Demo</a>
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <%# <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div> %>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/jardin_merigues.png" class="carousel-img img-fluid" alt="Image du dome jardin des mérigues">
+      <%# <div class="container">
+          <div class="carousel-caption text-start">
+            <h1>Example headline.</h1>
+            <p>Some representative placeholder content for the first slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+          </div>
+        </div> %>
+    </div>
+    <div class="carousel-item">
+      <img src="/images/yvan_dome.jpg" class="carousel-img" alt="Image du dome jardin des mérigues">
+      <%# <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div> %>
+    </div>
+    <div class="carousel-item">
+      <img src="/images/basket.jpeg" class="carousel-img" alt="Image du dome jardin des mérigues">
+      <%# <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>One more for good measure.</h1>
+            <p>Some representative placeholder content for the third slide of this carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+          </div>
+        </div> %>
+    </div>
   </div>
-  <div class="w3-col m6">
-    <a href="w3css_templates.asp" class="w3-button w3-padding-large w3-dark-grey" style="width:98.5%">More Templates »</a>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<%# End carou %>
+<div class="container-fluid" style="padding-top: 1rem">
+  <%= render "baskets/display_basket", basket: @next_basket %>
+  <div class="container mt-5 text-center">
+    <p> <i class="bi bi-person-circle"></i> </p>
+    <ul class="w3-leftbar w3-theme-border" style="list-style:none">
+      <li>Smaller and faster than other CSS frameworks.</li>
+      <li>Easier to learn, and easier to use than other CSS frameworks.</li>
+      <li>Uses standard CSS only (No jQuery or JavaScript library).</li>
+      <li>Speeds up mobile HTML apps.</li>
+      <li>Provides CSS equality for all devices. PC, laptop, tablet, and mobile:</li>
+    </ul>
+    <br>
+  </div>
+  <%= image_tag "basket.jpeg" %>
+  <hr>
+  <h2>W3.CSS is Free</h2>
+  <p>W3.CSS is free to use. No license is necessary.</p>
+  <hr>
+  <h2>Easy to Use</h2>
+  <div class="w3-container w3-sand w3-leftbar">
+    <p><i>Make it as simple as possible, but not simpler.</i><br>
+      Albert Einstein</p>
   </div>
 </div>
-</div>
-</div>
-
-<div class="w3-container w3-padding-16 w3-card" style="background-color:#eee">
-<h3 class="w3-center">Blog Template</h3>
-<div class="w3-content" style="max-width:800px">
-<img src="img_temp_blog.jpg" style="width:98%;margin:20px 0" alt="Blog Template"><br>
-<div class="w3-row">
-  <div class="w3-col m6">
-    <a href="tryw3css_templates_blog.htm" target="_blank" class="w3-button w3-padding-large w3-dark-grey" style="width:98.5%">Demo</a>
-  </div>
-  <div class="w3-col m6">
-    <a href="w3css_templates.asp" class="w3-button w3-padding-large w3-dark-grey" style="width:98.5%">More Templates »</a>
-  </div>
-</div>
-</div>
-</div>
-</main>

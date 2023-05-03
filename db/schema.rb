@@ -15,6 +15,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_205852) do
     t.text "content"
     t.date "date"
     t.integer "limit_max_baskets", default: 30
+    t.boolean "exceptional_sale", default: false
+    t.text "exceptional_sale_content", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -24,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_21_205852) do
     t.string "last_name"
     t.string "password"
     t.boolean "admin", default: false
+    t.boolean "engaged_client", default: false
     t.string "phone"
     t.string "email", null: false
     t.datetime "created_at", null: false

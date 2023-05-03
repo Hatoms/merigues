@@ -1,0 +1,45 @@
+<h1> Les prochains paniers </h1>
+<%= month_calendar(attribute: :date, events: @baskets) do |d, baskets| %>
+  <div class="calendar-day">
+    <% unless baskets.present? %>
+      <p style="text-align: center">
+        <%= d.day %>
+      </p>
+    <% end %>
+    <% baskets.each do |basket| %>
+      <div class="row">
+        <p>
+          <%= basket.name %>.<br>
+          <% if basket.exceptional_sale? %>
+            Vente exceptionnelle : <%= basket.exceptional_sale_content %>
+          <% end %><br>
+          <%= link_to "Voir description du panier", basket_path(basket) %>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col">
+          <% if basket.date + 1.day < Time.now %>
+            Paniers déjà distribués.
+          <% elsif Current.customer.nil? %>
+            Je me <%= link_to "connecte", customers_path %> pour commander le panier.
+          <% elsif Current.customer.baskets.include? basket %>
+            Panier commandé. <br>
+            Je souhaite me désinscrire : <%= button_to "J'annule ma commande", cancel_order_basket_path(id: basket.id) %>
+          <% elsif basket.orders.count < basket.limit_max_baskets %>
+            Panier non commandé.
+            <%= button_to "Je commande le panier", new_order_basket_path(id: basket.id) %>
+          <% else %>
+            Il n'y a malheureusement plus de paniers disponibles.
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div style="float: right" class="col">
+          <% unless basket.date + 1.day < Time.now %>
+            Paniers déjà commandés : <%= basket.orders.count.to_s + ' / ' + basket.limit_max_baskets.to_s %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/admin', to: 'customers#login_admin', as: 'customer_login_admin'
   post "login_admin", to: "sessions#sign_in_admin"
   post "baskets/new_order", to: "baskets#new_order", as: 'new_order_basket'
+  post "baskets/cancel_order", to: "baskets#cancel_order", as: 'cancel_order_basket'
+  get "baskets/calendar", to: "baskets#calendar", as: 'calendar_baskets'
   get '/customers/orders', to: 'customers#orders', as: 'orders_customer'
   get '/customers/admin_index', to: 'customers#admin_index', as: 'admin_index_customer'
   

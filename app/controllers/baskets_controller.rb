@@ -1,14 +1,24 @@
 class BasketsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_basket, only: [:show, :edit, :update, :destroy, :sign_in, :new_order]
+  before_action :set_basket, only: [:show, :edit, :update, :destroy, :sign_in, :new_order, :cancel_order]
 
   def new_order
     @order = Order.new(customer_id: Current.customer.id, basket_id: @basket.id)
     if @order.save
-      redirect_to root_path, notice: "La order a bien été effectuée."
+      redirect_back_or_to({ action: "show", id: @basket.id, notice: "Commande effectuée" })
     else
-      redirect_to root_path, notice: "Une erreur a été rencontré."
+      redirect_back_or_to({ action: "show", id: @basket.id, notice: "Une erreur a été rencontrée" })
     end
+  end
+
+  def cancel_order
+    order = Order.find_by(customer_id: Current.customer.id, basket_id: @basket.id)
+    order.destroy
+    redirect_back_or_to({ action: "show", id: @basket.id, notice: "La commande a bien été annulée" })
+  end
+
+  def calendar
+    @baskets = Basket.all
   end
    
   def index
@@ -55,6 +65,6 @@ class BasketsController < ApplicationController
   end
 
   def basket_params
-    params.require(:basket).permit(:content, :date)
+    params.require(:basket).permit(:content, :date, :limit_max_baskets)
   end
 end

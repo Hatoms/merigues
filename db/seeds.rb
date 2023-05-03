@@ -92,5 +92,11 @@ p "Created #{Customer.count} customers"
     content: 50.times.map { (0...(rand(10))).map { ('a'..'z').to_a[rand(26)] }.join }.join(" "),
     date: n.days.from_now
   })
-end 
+end
+Basket.create({
+  content: "Le panier contient voilàa voilà",
+  exceptional_sale: true,
+  exceptional_sale_content: "Tomates et melons",
+  date: 3.days.from_now
+})
 p "Created #{Basket.count} baskets"

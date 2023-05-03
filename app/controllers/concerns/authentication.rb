@@ -10,6 +10,7 @@ module Authentication
     def login(customer)
       reset_session
       session[:customer_id] = customer.id
+      current_customer
     end
   
     def logout

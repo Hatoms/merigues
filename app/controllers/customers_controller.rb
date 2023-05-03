@@ -21,6 +21,9 @@ class CustomersController < ApplicationController
 
     if @customer.save
       login(@customer)
+      if customer_params['engaged_client'] == "true"
+        order_all_baskets
+      end
       redirect_to root_path, notice: "customer was successfully created."
     else
       render :new
@@ -56,6 +59,12 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :phone)
+    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :engaged_client)
+  end
+
+  def order_all_baskets
+    Basket.all.filter{ |p| p.date > Time.now}.each do |b|
+      Order.create(customer_id: Current.customer.id, basket_id: b.id)
+    end
   end
 end
